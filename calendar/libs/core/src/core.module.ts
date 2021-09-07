@@ -1,8 +1,11 @@
-import { Module } from '@nestjs/common';
-import { CoreService } from './core.service';
+import { Global, Module } from '@nestjs/common';
+import { CalendarioModule } from './calendar/calendario.module';
+import { DatabaseMongoModule } from './calendar/database/mongodb/mongodb.module';
 
+@Global()
 @Module({
-  providers: [CoreService],
-  exports: [CoreService],
+  imports: [DatabaseMongoModule, CalendarioModule],
+  exports: [DatabaseMongoModule],
+  providers: [],
 })
 export class CoreModule {}
