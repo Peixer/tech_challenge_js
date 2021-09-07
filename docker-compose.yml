@@ -22,7 +22,7 @@ services:
       - calendar-mongo-dbdata:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=WAhBRV2qHNA9c8yd744zH2w4
+      - MONGO_INITDB_ROOT_PASSWORD=jwcC7KIttO8%
     networks:
       - default
 
