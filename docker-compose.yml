@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  app-calendar-api:
+    build: ./calendar
+    entrypoint: ./.docker/entrypoint.sh
+    container_name: app-calendar-api
+    ports:
+      - 3002:3000
+    volumes:
+      - ./calendar:/home/node/app
+    networks:
+      - default
+
+  calendar-db:
+    image: mongo:latest
+    container_name: calendar-db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - calendar-mongo-dbdata:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=WAhBRV2qHNA9c8yd744zH2w4
+    networks:
+      - default
+
+volumes:
+  calendar-mongo-dbdata:
+    external: true
+
+networks:
+  default:
+    external:
+      name: app_default
