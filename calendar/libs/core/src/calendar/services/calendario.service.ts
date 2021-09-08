@@ -34,4 +34,8 @@ export class CalendarioService {
       .exec();
     return updatedCalendar;
   }
+
+  public async remove(id: string) {
+    await this.calendarioSchema.findByIdAndDelete(id);
+  }
 }
